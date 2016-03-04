@@ -1,0 +1,22 @@
+{
+  "name": "CryptoWallet-io/cryptowalletSDK",
+  "description": "CryptoWallet API PHP SDK",
+  "license": "MIT",
+  "keywords": ["Cryptowallet"],
+  "authors": [
+    {
+      "name": "James Kirkby",
+      "email": "jkirkby91@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "mashape/unirest-php": "2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  },
+  "autoload": {
+    "psr-4": { "CryptoWallet\\": "src/" }
+  }
+}
