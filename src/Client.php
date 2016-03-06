@@ -31,12 +31,4 @@
                 throw new \Exception('Unable to decode response',500);
             }
         }
-
-        /**
-         * @param $paymentPayload
-         */
-        function createCardPayment($paymentPayload)
-        {
-
-        }
     }

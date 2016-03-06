@@ -2,7 +2,7 @@
 
     /**
      * Created by PhpStorm.
-     * User: Satoshi
+     * User: jkirkby91
      * Date: 04/03/2016
      * Time: 19:15
      */
@@ -21,8 +21,8 @@
             $this->requestClient = new Request();
 
             $this->requestClient->defaultHeaders([
-                    'Content-Type' => 'application/json',
-                    'x-authorisation' => $this->apiKey
+                    'Content-Type'      => 'application/json',
+                    'x-authorisation'   => $this->apiKey
                 ]);
         }
 
@@ -51,17 +51,14 @@
         public function post($payload)
         {
             try {
-
                 $respone = $this->requestClient->post(
                     $payload['request']['url'],
                     $payload['request']['headers'],
                     $payload['data']['body']
                 );
-
             } catch ( \Exception $e){
                 throw new \Exception($e->getMessage(),500);
             }
             return $respone;
         }
-
     }

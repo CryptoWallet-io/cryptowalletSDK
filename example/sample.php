@@ -1,17 +1,24 @@
 <?php
 
-    require __DIR__ . '/vendor/autoload.php';
+    use CryptoWallet\CryptoWallet;
+    use CryptoWallet\Mehods\Payments\CardGateway;
 
-    use CryptoWallet\Client;
-    use CryptoWallet\Configuration;
+    require __DIR__ . '/vendor/autoload.php';
 
     $apiKey = '090909';
 
     try {
-        $cryptowallet = new \CryptoWallet\CryptoWallet($apiKey);
+        $cryptowallet = new CryptoWallet($apiKey);
     } catch (\Exception $e) {
         echo($e->getMessage());die;
         //non fatal so do something or die
     }
 
-d($cryptowallet);
+    try {
+        $cryptowallet = new \CryptoWallet\Mehods\Payments\CardGateway($cryptowallet);
+    } catch (\Exception $e) {
+        echo($e->getMessage());die;
+        //non fatal so do something or die
+    }
+
+    d($cryptowallet);
