@@ -9,7 +9,18 @@
 
     namespace CryptoWallet;
 
+    use CryptoWallet\Authentication\ApiKeyAuthentication as Authentication;
 
-    class HttpClient {
+    class HttpClient extends CryptoWallet
+    {
 
+        private $apiUrl;
+        private $apiVersion;
+
+        public function __construct($apiUrl, $apiVersion, Authentication $authentication)
+        {
+            $this->apiUrl = rtrim($apiUrl, '/');
+            $this->apiVersion = $apiVersion;
+            $this->auth = $authentication;
+        }
     }

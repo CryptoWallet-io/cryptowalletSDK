@@ -15,7 +15,7 @@
     const DEFAULT_API_URL = 'https://cryptowalet.io/api/';
     const DEFAULT_API_VERSION = 'v1/';
 
-    class Configuration {
+    class Configuration extends CryptoWallet {
 
         /**
          * Creates a new configuration with API key authentication.
