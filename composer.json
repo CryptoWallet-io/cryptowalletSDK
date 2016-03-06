@@ -1,5 +1,5 @@
 {
-  "name": "CryptoWallet-io/cryptowalletSDK",
+  "name": "crypto-wallet-io/cryptowallet-sdk",
   "type": "library",
   "description": "CryptoWallet API PHP SDK",
   "license": "MIT",
