@@ -9,14 +9,31 @@
 
     namespace CryptoWallet;
 
-    if (version_compare(PHP_VERSION, '5.4.0', '<')) {
-        throw new \Exception('The CryptoWallet SDK requires PHP version 5.4 or higher.');
-    }
-    if (!function_exists('curl_init')) {
-        throw new \Exception('CryptoWallet needs the CURL PHP extension.');
-    }
-    if (!function_exists('json_decode')) {
-        throw new \Exception('CryptoWallet needs the JSON PHP extension.');
-    }
+    use CryptoWallet\Client;
+    use CryptoWallet\HttpClient;
+    use CryptoWallet\Configuration;
 
-    abstract class CryptoWallet{}
+    class CryptoWallet
+    {
+
+        public $client;
+
+        protected $apiKey;
+        protected $configuration;
+
+        public function __Construct($apiKey)
+        {
+
+            if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+                throw new \Exception('The CryptoWallet SDK requires PHP version 5.4 or higher.');
+            }
+            if (!function_exists('curl_init')) {
+                throw new \Exception('The CryptoWallet SDK needs the CURL PHP extension.');
+            }
+            if (!function_exists('json_decode')) {
+                throw new \Exception('The CryptoWallet SDK needs the JSON PHP extension.');
+            }
+
+            $this->client = new Client(new Configuration($apiKey));
+        }
+    }

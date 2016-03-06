@@ -1,5 +1,6 @@
 {
-    "require": {
-        "CryptoWallet-io/cryptowalletSDK": "0.0.1"
-    }
+  "require": {
+    "crypto-wallet-io/cryptowallet-sdk": "dev-master",
+    "raveren/kint": "^1.0"
+  }
 }

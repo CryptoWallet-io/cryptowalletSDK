@@ -9,26 +9,19 @@
 
     namespace CryptoWallet;
 
-    use CryptoWallet\Authentication\ApiKeyAuthentication;
-    use Unirest\Request;
+    class Configuration {
 
-    const DEFAULT_API_URL = 'https://cryptowalet.io/api/';
-    const DEFAULT_API_VERSION = 'v1/';
+        const DEFAULT_API_URL = 'https://cryptowalet.io/api/';
+        const DEFAULT_API_VERSION = 'v1/';
 
-    class Configuration extends CryptoWallet {
+        private $apiUrl;
+        private $apiVersion;
 
-        /**
-         * Creates a new configuration with API key authentication.
-         *
-         * @param $apiKey
-         *
-         * @return static
-         */
-        public static function apiKey($apiKey)
+        public function __construct($apiKey)
         {
-            return new static(
-                new ApiKeyAuthentication($apiKey)
-            );
+            $this->apiKey = $apiKey;
+            $this->apiUrl = self::DEFAULT_API_URL;
+            $this->apiVersion = self::DEFAULT_API_VERSION;
         }
 
         /**
@@ -36,11 +29,6 @@
          */
         public function createHttpClient()
         {
-            $httpClient = new Request();
-
-            $httpClient->defaultHeaders([
-                    'Content-Type'  => 'application/json',
-                    'X-Authorization'   => $this->getA
-                ]);
+            new HttpClient($this->apiKey,$this->apiUrl,$this->apiVersion);
         }
     }

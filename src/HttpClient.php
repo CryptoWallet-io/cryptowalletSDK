@@ -9,18 +9,20 @@
 
     namespace CryptoWallet;
 
-    use CryptoWallet\Authentication\ApiKeyAuthentication as Authentication;
+    use Unirest\Request;
 
-    class HttpClient extends CryptoWallet
-    {
+    class HttpClient {
 
-        private $apiUrl;
-        private $apiVersion;
-
-        public function __construct($apiUrl, $apiVersion, Authentication $authentication)
+        public function __Construct($apiKey,$apiVersion,$apiUrl)
         {
+            $this->apiKey = $apiKey;
             $this->apiUrl = rtrim($apiUrl, '/');
             $this->apiVersion = $apiVersion;
-            $this->auth = $authentication;
+            $this->transport = new Request();
+
+            $this->transport->defaultHeaders([
+                    'Content-Type' => 'application/json',
+                    'x-authorisation' => $this->apiKey
+                ]);
         }
     }

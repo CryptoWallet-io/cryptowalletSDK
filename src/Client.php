@@ -9,33 +9,17 @@
 
     namespace CryptoWallet;
 
-    class Client extends CryptoWallet {
+    class Client {
 
         /**
-         * Creates a new CryptoWallet client.
-         *
          * @param Configuration $configuration
-         *
-         * @return static
          */
-        public static function create(Configuration $configuration)
+        public function __construct(Configuration $configuration)
         {
-            return new static(
-                $configuration->createHttpClient()
-            );
+            $this->http = $configuration->createHttpClient($configuration->apiKey);
         }
 
         /**
-         * @param HttpClient $http
-         */
-        public function __construct(HttpClient $http)
-        {
-            $this->http = $http;
-        }
-
-        /**
-         * Decodes api response to php array
-         *
          * @return mixed
          * @throws \Exception
          */
