@@ -18,11 +18,50 @@
             $this->apiKey = $apiKey;
             $this->apiUrl = rtrim($apiUrl, '/');
             $this->apiVersion = $apiVersion;
-            $this->transport = new Request();
+            $this->requestClient = new Request();
 
-            $this->transport->defaultHeaders([
+            $this->requestClient->defaultHeaders([
                     'Content-Type' => 'application/json',
                     'x-authorisation' => $this->apiKey
                 ]);
         }
+
+        /**
+         * @param $url
+         *
+         * @return \Unirest\Response
+         * @throws \Exception
+         */
+        public function get($url)
+        {
+            try {
+                $response = $this->requestClient->get($url);
+            } catch (\Exception $e){
+                throw new \Exception($e->getMessage(),500);
+            }
+            return $response;
+        }
+
+        /**
+         * @param $payload
+         *
+         * @return \Unirest\Response
+         * @throws \Exception
+         */
+        public function post($payload)
+        {
+            try {
+
+                $respone = $this->requestClient->post(
+                    $payload['request']['url'],
+                    $payload['request']['headers'],
+                    $payload['data']['body']
+                );
+
+            } catch ( \Exception $e){
+                throw new \Exception($e->getMessage(),500);
+            }
+            return $respone;
+        }
+
     }
