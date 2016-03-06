@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd69b72321597f29e74d0a2767ee60ad",
-    "content-hash": "b487584694576153fd72612b7742704b",
+    "hash": "540d2077a6b2dbcc0af1f345db7786ae",
+    "content-hash": "263ccd33ea6a7de5fc8f901b6e5c3741",
     "packages": [
         {
             "name": "mashape/unirest-php",
@@ -678,6 +678,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.3.0"
+    },
     "platform-dev": []
 }
