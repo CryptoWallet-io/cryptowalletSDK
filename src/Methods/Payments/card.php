@@ -7,7 +7,7 @@
      * Time: 17:46
      */
 
-    namespace CryptoWallet\Mehods\Payments;
+    namespace CryptoWallet\Methods\Payments;
 
     use CryptoWallet\Client;
 

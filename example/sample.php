@@ -1,7 +1,7 @@
 <?php
 
     use CryptoWallet\CryptoWallet;
-    use CryptoWallet\Mehods\Payments\CardGateway;
+    use CryptoWallet\Methods\Payments\CardGateway;
 
     require __DIR__ . '/vendor/autoload.php';
 
@@ -15,7 +15,7 @@
     }
 
     try {
-        $cryptowallet = new \CryptoWallet\Mehods\Payments\CardGateway($cryptowallet);
+        $cryptowallet = new CardGateway($cryptowallet);
     } catch (\Exception $e) {
         echo($e->getMessage());die;
         //non fatal so do something or die
