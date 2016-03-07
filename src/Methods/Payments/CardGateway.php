@@ -16,17 +16,22 @@
 
         public $endpoint;
 
-        public function __Construct(){
+        public function __Construct($cryptowalletClient){
+            $this->cryptowallet = $cryptowalletClient;
             $this->endpoint = 'payments/card';
         }
 
         /**
          * @param array $paymentPayload
          *
-         * @return bool
+         * @return \Unirest\response
          */
         public function createCardPayment(array $paymentPayload)
         {
-            return $this->requestInterface->post($paymentPayload, $this->endpoint);
+            $response = $this->cryptowallet->client->requestInterface->post(
+                json_encode($paymentPayload),
+                $this->cryptowallet->configuration->apiUrl.$this->cryptowallet->configuration->apiVersion.$this->endpoint
+            );
+            return $response;
         }
     }

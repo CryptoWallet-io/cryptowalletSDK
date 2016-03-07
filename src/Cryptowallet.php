@@ -16,19 +16,20 @@
     class CryptoWallet
     {
 
-        public  $client;
+        public $client;
 
-        protected $apiKey;
-        protected $configuration;
+        public $configuration;
 
         /**
          * Factory to return the CryptoWallet client with the method requested
          *
          * @param $apiKey
-         * @param $method
+         *
          * @throws \Exception
+         * @internal param $method
+         *
          */
-        public function __Construct($apiKey,$method)
+        public function __Construct($apiKey)
         {
             if (version_compare(PHP_VERSION, '5.4.0', '<')) {
                 throw new \Exception('The CryptoWallet SDK requires PHP version 5.4 or higher.');
@@ -40,12 +41,7 @@
                 throw new \Exception('The CryptoWallet SDK needs the JSON PHP extension.');
             }
 
-            $this->client = new Client(new Configuration($apiKey));
-
-            if(is_object($method)){
-                $this->client = $method;
-            } else {
-                throw new \Exception('You need to initialise a method to use the CryptoWallet client');
-            }
+            $this->configuration = new Configuration($apiKey);
+            $this->client = new Client($this->configuration);
         }
     }

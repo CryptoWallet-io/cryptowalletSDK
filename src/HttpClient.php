@@ -11,24 +11,22 @@
 
     use Unirest\Request;
 
-    class HttpClient {
+    class HttpClient extends Client {
 
         /**
-         * @param $apiKey
-         * @param $apiVersion
-         * @param $apiUrl
+         * @param Configuration $apiKey
          */
-        public function __Construct($apiKey,$apiVersion,$apiUrl)
+        public function __Construct($apiKey)
         {
-            $this->apiKey = $apiKey;
-            $this->apiUrl = rtrim($apiUrl, '/');
-            $this->apiVersion = $apiVersion;
             $this->requestClient = new Request();
 
             $this->requestClient->defaultHeaders([
                     'Content-Type'      => 'application/json',
-                    'x-authorisation'   => $this->apiKey
+                    'x-authorization'   => $apiKey
                 ]);
+
+            $this->requestClient->verifyHost(false);
+            $this->requestClient->verifyPeer(false);
         }
 
         /**
@@ -57,7 +55,7 @@
         public function post($payload,$endpoint)
         {
             try {
-                $response = $this->requestClient->post($endpoint,null,$payload);
+                $response = $this->requestClient->send('POST',$endpoint,$payload);
             } catch ( \Exception $e){
                 throw new \Exception($e->getMessage(),500);
             }

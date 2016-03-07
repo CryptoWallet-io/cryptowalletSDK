@@ -11,13 +11,13 @@
 
     class Configuration {
 
-        const DEFAULT_API_URL = 'https://cryptowalet.io/api/';
+        const DEFAULT_API_URL = 'https://cryptowallet.io/api/';
         const DEFAULT_API_VERSION = 'v1/';
 
-        private $apiUrl;
-        private $apiVersion;
+        public $apiUrl;
+        public $apiVersion;
 
-        public function __construct($apiKey)
+        public function __Construct($apiKey)
         {
             $this->apiKey = $apiKey;
             $this->apiUrl = self::DEFAULT_API_URL;
@@ -31,6 +31,6 @@
          */
         public function createHttpClient()
         {
-            return new HttpClient($this->apiKey,$this->apiUrl,$this->apiVersion);
+            return new HttpClient($this->apiKey);
         }
     }
