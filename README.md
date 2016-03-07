@@ -13,4 +13,4 @@ Examples can be found in the example folder
 
 To install run
 
-composer require crypto-wallet-io/cryptowallet-sdk
+        composer require crypto-wallet-io/cryptowallet-sdk
