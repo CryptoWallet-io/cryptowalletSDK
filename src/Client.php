@@ -11,24 +11,13 @@
 
     class Client {
 
+        public $requestInterface;
+
         /**
          * @param Configuration $configuration
          */
-        public function __construct(Configuration $configuration)
+        public function __Construct(Configuration $configuration)
         {
-            $this->http = $configuration->createHttpClient($configuration->apiKey);
-        }
-
-        /**
-         * @return mixed
-         * @throws \Exception
-         */
-        public function decodeLastResponse()
-        {
-            if ($response = $this->http->getLastResponse()) {
-                return json_decode($response,true);
-            } else {
-                throw new \Exception('Unable to decode response',500);
-            }
+            $this->requestInterface = $configuration->createHttpClient($configuration->apiKey);
         }
     }

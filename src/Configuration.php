@@ -25,10 +25,12 @@
         }
 
         /**
+         * Returns a http client interface
          *
+         * @return HttpClient
          */
         public function createHttpClient()
         {
-            new HttpClient($this->apiKey,$this->apiUrl,$this->apiVersion);
+            return new HttpClient($this->apiKey,$this->apiUrl,$this->apiVersion);
         }
     }

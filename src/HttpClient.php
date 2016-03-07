@@ -13,6 +13,11 @@
 
     class HttpClient {
 
+        /**
+         * @param $apiKey
+         * @param $apiVersion
+         * @param $apiUrl
+         */
         public function __Construct($apiKey,$apiVersion,$apiUrl)
         {
             $this->apiKey = $apiKey;
@@ -44,21 +49,18 @@
 
         /**
          * @param $payload
+         * @param $endpoint
          *
-         * @return \Unirest\Response
+         * @return \Unirest\response
          * @throws \Exception
          */
-        public function post($payload)
+        public function post($payload,$endpoint)
         {
             try {
-                $respone = $this->requestClient->post(
-                    $payload['request']['url'],
-                    $payload['request']['headers'],
-                    $payload['data']['body']
-                );
+                $response = $this->requestClient->post($endpoint,null,$payload);
             } catch ( \Exception $e){
                 throw new \Exception($e->getMessage(),500);
             }
-            return $respone;
+            return $response;
         }
     }
